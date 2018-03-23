@@ -1,0 +1,45 @@
+<App>
+	<JavaScript File="scripts/MainView.js"/>
+	<Font File="assets/fonts/roboto/Roboto-Thin.ttf" ux:Global="Thin" />
+	<Font File="assets/fonts/icons/fa-solid-900.ttf" ux:Global="FontAwesome" />
+
+	<Panel ux:Class="ToggleBtn" Margin="4" Color="#007bff">
+	    <string ux:Property="Text" />
+	    <Text Value="{ReadProperty Text}" Color="#fff" FontSize="18" Alignment="Center" Margin="20,15" />
+
+	    <WhilePressed>
+	    	<Scale Factor="1.1" />
+	        <Change this.Color="#636363" Duration="0.03" DurationBack=".03" />
+	    </WhilePressed>
+	</Panel>
+
+	<Panel ux:Class="IconBtn">
+	    <string ux:Property="Text" />
+	    <Text Font="FontAwesome" Color="#333" ux:Name="LapText" FontSize="40" Alignment="Center">{ReadProperty Text}</Text>
+	    <WhileTrue Value="{is_running}"> 
+		    <WhilePressed>
+		    	<Change LapText.Color="#ccc" Duration="0.09" />
+		    	<Rotate Degrees="90" Duration="0.02"/>
+		    </WhilePressed>
+	    </WhileTrue>
+	</Panel>
+
+	<StackPanel  Margin="0,25,0,0" Padding="20">	
+		<ImageFill File="assets/images/seigaiha.png" StretchMode="Fill" />
+		<Text Value="HIIT Stopwatch" Color="#333" FontSize="18" Alignment="Center" Margin="0,0,0,10" />
+		<Text FontSize="65" Font="Thin" TextAlignment="Center" Margin="0,0,0,20">{time_elapsed}</Text>
+		<IconBtn Text="&#xf2f1;" Clicked="{addLap}" />
+		<Text Value="Laps" Color="#333" FontSize="15" Alignment="Center" Margin="0,5,0,20" />
+		<ToggleBtn Text="{toggle_btn_text}" Clicked="{toggle}" />
+		
+		<StackPanel Margin="20,40">
+			<Each Items="{laps}">
+				<DockPanel Margin="0,0,0,15">
+					<Text Alignment="Left" FontSize="18" Color="#333" Value="{title}" />
+					<Text Alignment="Center" FontSize="18" Color="#333" Value="{distance}" />
+					<Text Alignment="Right" FontSize="18" Color="#333" Value="{time}" />
+				</DockPanel>
+			</Each>
+		</StackPanel>
+	</StackPanel>
+</App>

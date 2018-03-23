@@ -1,0 +1,16 @@
+{
+  "RootNamespace":"",
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Fuse.GeoLocation"
+  ],
+  "Includes": [
+    "*"
+  ],
+  "iOS": {
+  	"BundleIdentifier": "com.wern.stopwatch",
+    "PreviewBundleIdentifier": "com.wern.stopwatch.preview"
+  }
+}
+
